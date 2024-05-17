@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Button, StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import Header from '../../components/Header'
+import { TextInput } from 'react-native-paper';
+import { Ionicons } from '@expo/vector-icons'
 
 const statusBarHeight = StatusBar.currentHeight ? StatusBar.currentHeight + 55 : 64;
 
@@ -40,18 +42,49 @@ export default function Buscar() {
         <View style={styles.div}>
           <View>
             <Text style={styles.subCent}>Em qual lugar?</Text>
+             <TextInput style={styles.imput}> </TextInput>
+             
           </View>
         </View>
         <View style={styles.divider}></View>
         <View style={styles.div}>
           <View>
-            <Text style={styles.subCent}>1111111111</Text>
+            <Text style={styles.subCent}>Qual tipo?</Text>
           </View>
         </View>
         <View style={styles.divider}></View>
         <View style={styles.div}>
           <View>
-            <Text style={styles.subCent}>22222222222</Text>
+            <Text style={styles.subCent}>Quartos</Text>
+            
+          </View>
+        </View>
+        <View style={styles.divider}></View>
+        <View style={styles.div}>
+          <View>
+            <Text style={styles.subCent}>Banheiros</Text>
+            
+          </View>
+        </View>
+        <View style={styles.divider}></View>
+        <View style={styles.div}>
+          <View>
+            <Text style={styles.subCent}>Área</Text>
+            
+          </View>
+        </View>
+        <View style={styles.divider}></View>
+        <View style={styles.div}>
+          <View>
+            <Text style={styles.subCent}>Data de públicação</Text>
+            
+          </View>
+        </View>
+        <View style={styles.divider}></View>
+        <View style={styles.div}>
+          <View>
+            <Text style={styles.subCent}>Tipo de anunciante</Text>
+            
           </View>
         </View>
         <View style={styles.divider}></View>
@@ -75,7 +108,7 @@ const styles = StyleSheet.create({
   subCent: {
     fontSize:14,
     fontWeight: 'bold',
-    color: '#FFFFFF'
+    color: '#FFFFFF',
   },
   subContainer: {
     paddingTop: 10,
@@ -124,7 +157,7 @@ const styles = StyleSheet.create({
   },
   div:{
     backgroundColor: '#043B74',
-    paddingTop: 30,
+    paddingTop: 15,
     paddingLeft: 40,
     //alignItems: 'center',
     //justifyContent: 'center'
@@ -133,5 +166,11 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: '#ccc',
     marginVertical: 16
+  },
+  imput:{
+    flex:1,
+    width:'90%',
+    height: 40,
+    borderRadius: 5,
   }
 });

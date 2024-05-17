@@ -10,7 +10,7 @@ export default function Header(){
     return(
         
             <View style={styles.container}>
-                <Text> HEADER IMPORTADO</Text>
+                
             </View>
        
     )

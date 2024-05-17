@@ -5,7 +5,7 @@ import Buscar from './pages/Buscar'
 import Anunciar from './pages/Anunciar'
 import Mensagem from './pages/Mensagem'
 import Conta from './pages/Conta'
-import{ Ionicons, AntDesign, FontAwesome } from '@expo/vector-icons'
+import { Ionicons, AntDesign, FontAwesome } from '@expo/vector-icons'
 
 const Tab = createBottomTabNavigator();
 
