@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, Image, TextInput } from 'react-native';
+import { Button, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import Header from '../../components/Header'
 
 const statusBarHeight = StatusBar.currentHeight ? StatusBar.currentHeight + 55 : 64;
@@ -24,6 +24,11 @@ export default function Conta() {
             placeholder='Senha'
             secureTextEntry={true}
           /> 
+        </View>
+        <View style={styles.div}>
+          <TouchableOpacity style={styles.inputButtom}>
+            <Text style={styles.nameButtomInput}> Iniciar sessão </Text>
+          </TouchableOpacity>
         </View>
       </View>    
     </View> 
@@ -80,6 +85,20 @@ export default function Conta() {
     },
     titleInput: {
       paddingLeft: 10,
+    },
+    nameButtomInput: {
+      paddingTop: 10,     
+      fontSize: 20,
+      color: '#FFFFFF'
+    },
+    inputButtom: {
+      width: '85%',
+      height: 50,
+      backgroundColor: '#FF7A00',
+      borderRadius: 15,
+      alignItems: 'center',
+      
+
     }
     
     
