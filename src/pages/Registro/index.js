@@ -1,51 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import Header from '../../components/Header'
-
-
 
 const statusBarHeight = StatusBar.currentHeight ? StatusBar.currentHeight + 55 : 64;
 
-export default function Conta({ navigation }) {
+export default function Registro({navigation}) {
     return (
     <View style={styles.container}>
-      <View style={styles.subContainer}>
-        <Text style={styles.nameCent}> ENTRAR</Text>
-        <Text style={styles.subCent}>Iniciar sessão para continuar</Text>
-        <View style={styles.div}>
-          <Text style={styles.titleInput}>NOME</Text>
-          <TextInput
-            style={styles.input}
-            placeholder='Login'            
-          /> 
+      <View style={styles.header}>
+          <View style={styles.div}>
+            <TouchableOpacity
+              style={styles.inputButtom}
+              onPress={() => navigation.jumpTo('Conta')}
+              >
+              <Text style={styles.nameButtomInput}> já sou cadastrado </Text>
+            </TouchableOpacity>
+            
+          </View>
         </View>
-        <View style={styles.div}>
-          <Text style={styles.titleInput}>SENHA</Text>
-          <TextInput
-            style={styles.input}
-            placeholder='Senha'
-            secureTextEntry={true}
-          /> 
-        </View>
-        <View style={styles.div}>
-          <TouchableOpacity style={styles.inputButtom}>
-            <Text style={styles.nameButtomInput}> Iniciar sessão </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.inputButtom}
-            onPress={() => navigation.jumpTo('Registro')}
-            >
-            <Text style={styles.nameButtomInput}> Cadastre-se </Text>
-          </TouchableOpacity>
-        </View>
-      </View>    
+        
     </View> 
    
     );   
   }
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      //flex: 1,
       backgroundColor: '#043B74',
       //alignItems: 'center',
       justifyContent: 'flex-end',
@@ -110,4 +90,4 @@ export default function Conta({ navigation }) {
     }
     
     
-  });
+  })

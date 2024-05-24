@@ -6,6 +6,7 @@ import Anunciar from './pages/Anunciar'
 import Mensagem from './pages/Mensagem'
 import Conta from './pages/Conta'
 import { Ionicons, AntDesign, FontAwesome } from '@expo/vector-icons'
+import Registro from './pages/Registro'
 
 const Tab = createBottomTabNavigator();
 
@@ -87,6 +88,13 @@ export default function Routes() {
                                 return <FontAwesome name='user-circle' size={size} color='#FFFFFF' />
 
                         }
+                    }}
+                />      
+                <Tab.Screen
+                    name="Registro"
+                    component={Registro}
+                    options={{
+                        tabBarButton: (props) => null
                     }}
                 />      
             </Tab.Navigator>
