@@ -1,12 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import Header from '../../components/Header'
+import { useState } from 'react';
 
 
 
 const statusBarHeight = StatusBar.currentHeight ? StatusBar.currentHeight + 55 : 64;
 
 export default function Conta({ navigation }) {
+  
+  const [nome,setNome] = useState('')
+  const [senha,setSenha] = useState('')
+
+  const login = () => {
+    alert(nome);
+    alert(senha);
+  }
+
     return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
@@ -16,7 +26,8 @@ export default function Conta({ navigation }) {
           <Text style={styles.titleInput}>NOME</Text>
           <TextInput
             style={styles.input}
-            placeholder='Login'            
+            placeholder='Login'
+            onChangeText={text=>setNome(text)}            
           /> 
         </View>
         <View style={styles.div}>
@@ -25,13 +36,19 @@ export default function Conta({ navigation }) {
             style={styles.input}
             placeholder='Senha'
             secureTextEntry={true}
-          /> 
+            onChangeText={text=>setSenha(text)}
+          />
         </View>
         <View style={styles.div}>
-          <TouchableOpacity style={styles.inputButtom}>
-            <Text style={styles.nameButtomInput}> Iniciar sessão </Text>
-          </TouchableOpacity>
           <TouchableOpacity
+            style={styles.inputButtom}
+            onPress={() => login()}
+          >
+            <Text style={styles.nameButtomInput}> Iniciar sessão </Text>
+          </TouchableOpacity>          
+        </View>
+        <View style={styles.div}>
+        <TouchableOpacity
             style={styles.inputButtom}
             onPress={() => navigation.jumpTo('Registro')}
             >
