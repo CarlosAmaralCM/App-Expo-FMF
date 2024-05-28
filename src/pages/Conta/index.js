@@ -10,7 +10,7 @@ const statusBarHeight = StatusBar.currentHeight ? StatusBar.currentHeight + 55 :
 
 export default function Conta({ navigation }) {
   
-  const [nome,setNome] = useState('teste')
+  const [nome,setNome] = useState('')
   const [senha,setSenha] = useState('')
   const storeUserData = async (token) => {
     try {
