@@ -2,7 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import Header from '../../components/Header'
 import { useState } from 'react';
-
+import api from '../../services/api'
+import storeUserData from '../../services/storage';
 
 const statusBarHeight = StatusBar.currentHeight ? StatusBar.currentHeight + 55 : 64;
 
@@ -13,10 +14,18 @@ export default function Registro({ navigation }) {
   const [senha, setSenha] = useState('')
 
   const cadastro = () => {
-    //alert('funcionando');
-    alert(nome);
-    alert(email);
-    alert(senha);
+
+    api.post("/api/auth/local/register",{ username:email, email:email, password:senha})
+    .then(({data})=> {
+      if (storeUserData(data.jwt)){
+        navigation.jumpTo('Inicio')
+      }
+    })
+    .catch((error) => {
+      alert('ocorreu um erro ao registrar')
+      console.log(error.response)
+    }) 
+   
   }
   
     return (
