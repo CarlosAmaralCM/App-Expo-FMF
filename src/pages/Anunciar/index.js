@@ -36,6 +36,20 @@ export default function Anunciar() {
           <Text style={styles.textTitle}> Titulo de anúncio</Text>
           <TextInput style={styles.divTitle}> </TextInput>
         </View>
+        <View>
+          <Text style={styles.textTitle}> Descrição</Text>
+          <TextInput style={styles.divDesc} textAlignVertical='top' multiline={true}> </TextInput>
+        </View>
+        <View>
+          <View style={{backgroundColor:'red', width:'40%', flex:1}}>
+            <Text style={styles.textTitle}> Preço </Text>
+            <TextInput style={styles.divPreco} keyboardType='number-pad'> </TextInput>
+          </View >
+          <View style={{flex:2, alignSelf:'flex-end', width:'60%', paddingRight: 20}}>
+            <Text style={styles.textTitle}> Contato</Text>
+            <TextInput style={styles.divTitle} keyboardType='number-pad'> </TextInput>
+          </View>
+        </View>
         
     </View> 
    
@@ -51,7 +65,7 @@ export default function Anunciar() {
     },
     header:{
       backgroundColor: '#043B74',
-      paddingTop: statusBarHeight,
+      paddingTop: statusBarHeight+25,
       //alignItems: 'center',
       //justifyContent: 'center'
     },
@@ -95,17 +109,40 @@ export default function Anunciar() {
       alignSelf:'center',
       borderRadius: 10,
       justifyContent:'center',
+      fontSize: 15,
+      fontWeight:'bold'
+    },
+    divPreco:{
+      backgroundColor: '#FFFFFF',
+      marginTop: 5,
+      height: 40,
+      width: '80%',
+      //alignSelf:'center',
+      marginLeft:42,
+      borderRadius: 10,
+      justifyContent:'center',
+      fontSize: 15,
+      fontWeight:'bold'
     },
     textTitle:{
-      marginTop:10,
+      marginTop: 20,
       marginLeft: 40,
-      //marginBottom:-10,
       fontSize: 18,
       fontWeight:'bold',
       color: '#FFFFFF',
-      //backgroundColor: '#FFFFFF',
       height: 25,
       width: '40%',
+      
+    },
+    divDesc:{
+      backgroundColor:'#FFFFFF',
+      height: 100,
+      width: '80%',
+      alignSelf:'center',
+      borderRadius: 10,
+      fontSize: 15
+      
+      
     },
     pickImg:{
       //paddingTop:300,
