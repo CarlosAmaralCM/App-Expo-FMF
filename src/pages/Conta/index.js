@@ -140,9 +140,7 @@ export default function Conta({ navigation }) {
       height: 50,
       backgroundColor: '#FF7A00',
       borderRadius: 15,
-      alignItems: 'center',
-      
-
+      alignItems: 'center',    
     }
     
     
