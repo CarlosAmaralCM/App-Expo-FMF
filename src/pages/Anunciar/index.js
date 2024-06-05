@@ -3,7 +3,7 @@ import { Button, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } fr
 import Header from '../../components/Header';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
-
+import api from '../../services/api'
 const statusBarHeight = StatusBar.currentHeight ? StatusBar.currentHeight + 55 : 64;
 
 export default function Anunciar() {
