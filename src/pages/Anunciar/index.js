@@ -3,33 +3,19 @@ import { Button, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } fr
 import Header from '../../components/Header';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
+import { getUserToken } from '../../services/storage'
+import api from '../../services/api'
 
 const statusBarHeight = StatusBar.currentHeight ? StatusBar.currentHeight + 55 : 64;
 
 export default function Anunciar() {
 
   const [title, setTitle] = useState('')
-  const [descri, setDescri] = useState('')
+  const [description, setDescription] = useState('')
   const [price, setPrice] = useState ('')
-  const [contact, setContact] = useState('')
-  const [image, setImage] = useState('')
-
-  const anuncio = () => {
-
-    api.post("/api/homes",{ title:title, description:descri, price:price, phone:contact, images:image})
-    .then(({data})=> {
-      if (storeUserData(data.jwt)){
-        navigation.jumpTo('Inicio')
-      }
-    })
-    .catch((error) => {
-      alert('ocorreu um erro ao registrar')
-      console.log(error.response)
-    }) 
-   
-  }
-
-
+  const [phone, setPhone] = useState('')
+  const [images, setImages] = useState('')
+  
   const ImagePickerPress = async() => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -38,9 +24,50 @@ export default function Anunciar() {
       quality:1,
     })
     if (!result.canceled){
-      setImage(result.assets[0].uri)      
+      setImages(result.uri)      
     }
   } /* { image && <Image source={{uri: image }} style={styles.pickImg}/> }  */    /*imagem da livraria*/
+
+
+  const submitForm = async () => {
+    const token = await getUserToken()
+    
+    if (!token){
+      console.log('token nao disponivel')
+      return
+    }
+
+    let formData = new FormData();
+    formData.append('data', JSON.stringify({
+      title,
+      description,
+      price,
+      phone,
+    }))
+
+    if(images){
+      formData.append('files.images', {
+        uri: images,
+        name: images.name,
+        type: images.type,
+      })
+    }
+    try {
+      const response = await api.post('/api/homes', formData, {
+        headers: {
+          'Content-Type':'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        }
+      })
+      console.log(response.data)
+    } catch (error) {
+      console.log('erro ao enviar os dados')
+      console.log(error.response ? error.response.data : error.message)
+    }
+  }
+  
+
+
     return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -64,7 +91,7 @@ export default function Anunciar() {
             style={styles.divDesc}
             textAlignVertical='top'
             multiline={true}
-            onChangeText={text=>setDescri(text)}
+            onChangeText={text=>setDescription(text)}
             />
         </View>
         <View>
@@ -81,13 +108,13 @@ export default function Anunciar() {
             <TextInput
               style={styles.divTitle}
               keyboardType='number-pad'
-              onChangeText={text=>setContact(text)}
+              onChangeText={text=>setPhone(text)}
               />
           </View>
           <View style={styles.div}>
           <TouchableOpacity
             style={styles.inputButtom}
-            onPress={() => anuncio()}
+            onPress={submitForm}
           >
             <Text style={styles.nameButtomInput}> Anunciar </Text>
           </TouchableOpacity>          

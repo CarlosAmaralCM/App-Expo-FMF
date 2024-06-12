@@ -24,6 +24,7 @@ export default function Registro({ navigation }) {
     .catch((error) => {
       alert('ocorreu um erro ao registrar')
       console.log(error.response)
+      console.error("erro", error)      
     }) 
    
   }
@@ -139,4 +140,4 @@ export default function Registro({ navigation }) {
     }
     
     
-  });
+  }); 
