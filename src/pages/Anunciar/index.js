@@ -5,7 +5,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 import { getUserToken } from '../../services/storage'
 import api from '../../services/api'
-
+import api from '../../services/api'
 const statusBarHeight = StatusBar.currentHeight ? StatusBar.currentHeight + 55 : 64;
 
 export default function Anunciar() {
